@@ -1,0 +1,22 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+default_language_version:
+  python: python3.8
+
+- repo: https://github.com/andreoliwa/nitpick
+  rev: v0.22.2
+  hooks:
+  - id: nitpick
+    name: Check tool configuration.
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.4.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - id: check-toml
+  - id: check-added-large-files
+  - id: check-merge-conflict
+  - id: flake8
+    additional_dependencies: ['flake8-docstrings', 'darglint']

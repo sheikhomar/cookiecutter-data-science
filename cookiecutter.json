@@ -1,0 +1,8 @@
+{
+  "project_name": "ds-project",
+  "project_description": "Data science project description.",
+  "package_name": "ds_project",
+  "author_name": "Your Name",
+  "author_email": "Your Email",
+  "_extensions": ["jinja2_git.GitExtension"]
+}

@@ -1,0 +1,47 @@
+trigger:
+  branches:
+    include:
+      - master
+
+stages:
+  - stage: Build
+    jobs:
+    - job: Initial_Checks
+      pool:
+        vmImage: 'ubuntu-16.04'
+      steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '3'
+          addToPath: true
+          architecture: 'x64'
+      - script: |
+          pip install pre-commit
+          pre-commit install -f --install-hooks
+          pre-commit run --all-files
+        displayName: Perform pre-commit checks on all files.
+    - job: Unit_Tests
+      dependsOn: Initial_Checks
+      pool:
+        vmImage: 'ubuntu-16.04'
+      strategy:
+        matrix:
+          "python-3.7": # Supported version
+            python.version: '3.7'
+            python.architecture: x64
+          "python-3.8": # Latest version
+            python.version: '3.8'
+      steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '3'
+          addToPath: true
+          architecture: 'x64'
+      - script: |
+          curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+          source $HOME/.poetry/env
+          poetry install
+          echo "##vso[task.prependpath]$HOME/.poetry/bin"
+        displayName: Install tools and dependencies.
+      - script: poetry run pytest
+        displayName: Run tests.
