@@ -22,7 +22,7 @@ pre-commit = "^2.13"
 
 wemake-python-styleguide = "^0.15.3"
 flake8-pytest-style = "^1.5.0"
-nitpick = "^0.26"
+nitpick = "^0.28"
 safety = "^1.10.3"
 
 [tool.nitpick]
