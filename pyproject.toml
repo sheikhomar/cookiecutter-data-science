@@ -18,7 +18,7 @@ jinja2-git = "^1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
-pre-commit = "^2.13"
+pre-commit = "^2.15"
 
 wemake-python-styleguide = "^0.15.3"
 flake8-pytest-style = "^1.5.0"
