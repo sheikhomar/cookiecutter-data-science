@@ -21,7 +21,7 @@ pytest = "^6.2"
 pre-commit = "^2.15"
 
 wemake-python-styleguide = "^0.15.3"
-flake8-pytest-style = "^1.5.0"
+flake8-pytest-style = "^1.5.1"
 nitpick = "^0.26"
 safety = "^1.10.3"
 
