@@ -56,6 +56,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "bacon"
+version = "0.2.0"
+description = "Bacon Game Engine"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "bandit"
 version = "1.6.2"
 description = "Security oriented static analyser for python code."
@@ -147,21 +155,20 @@ testing = ["sphinx", "flake8", "pytest", "pytest-cov", "pytest-virtualenv", "pyt
 
 [[package]]
 name = "cookiecutter"
-version = "1.7.3"
+version = "2.1.0"
 description = "A command-line utility that creates projects from project templates, e.g. creating a Python package project from a Python package project template."
 category = "main"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+python-versions = ">=3.7"
 
 [package.dependencies]
 binaryornot = ">=0.4.4"
-click = ">=7.0"
+click = ">=7.0,<9.0.0"
 Jinja2 = ">=2.7,<4.0.0"
 jinja2-time = ">=0.2.0"
-poyo = ">=0.5.0"
 python-slugify = ">=4.0.0"
+pyyaml = ">=5.3.1"
 requests = ">=2.23.0"
-six = ">=1.10"
 
 [[package]]
 name = "darglint"
@@ -192,6 +199,9 @@ description = "Distribution utilities"
 category = "dev"
 optional = false
 python-versions = "*"
+
+[package.dependencies]
+bacon = "<=0.2"
 
 [[package]]
 name = "docutils"
@@ -685,14 +695,6 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 dev = ["pre-commit", "tox"]
 
 [[package]]
-name = "poyo"
-version = "0.5.0"
-description = "A lightweight YAML Parser for Python. 🐓"
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-
-[[package]]
 name = "pre-commit"
 version = "2.15.0"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
@@ -822,7 +824,7 @@ unidecode = ["Unidecode (>=1.1.1)"]
 name = "pyyaml"
 version = "5.3.1"
 description = "YAML parser and emitter for Python"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
@@ -1054,7 +1056,7 @@ dev = ["pytest (>=4.6.2)", "black (>=19.3b0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "57c1d69c1f2a9eb781b7426712b98ed68917f38b9548df0f3af3a1d02e8e0c72"
+content-hash = "629eae2496d9173c118f61e6ba13c6e00d60c97a8285d8c7f8f25fa0cc3a91cb"
 
 [metadata.files]
 appdirs = [
@@ -1081,6 +1083,9 @@ autorepr = [
     {file = "autorepr-0.3.0-py2-none-any.whl", hash = "sha256:c34567e4073630feb52d9c788fc198085e9e9de4817e3b93b7c4c534fc689f11"},
     {file = "autorepr-0.3.0-py2.py3-none-any.whl", hash = "sha256:1d9010d14fb325d3961e3aa73692685563f97d6ba4a2f0f735329fb37422599c"},
     {file = "autorepr-0.3.0.tar.gz", hash = "sha256:ef770b84793d5433e6bb893054973b8c7ce6b487274f9c3f734f678cae11e85e"},
+]
+bacon = [
+    {file = "bacon-0.2.0.zip", hash = "sha256:62bd99edd7a3d3e8fddbc7cd7e164313fc01cad6e84c4a010026aadc3129cc0f"},
 ]
 bandit = [
     {file = "bandit-1.6.2-py2.py3-none-any.whl", hash = "sha256:336620e220cf2d3115877685e264477ff9d9abaeb0afe3dc7264f55fa17a3952"},
@@ -1119,8 +1124,8 @@ configupdater = [
     {file = "ConfigUpdater-2.0.tar.gz", hash = "sha256:6a60447fb25e5cb5036cdd5761287ac5649135a49094bc8bd71d999417483441"},
 ]
 cookiecutter = [
-    {file = "cookiecutter-1.7.3-py2.py3-none-any.whl", hash = "sha256:f8671531fa96ab14339d0c59b4f662a4f12a2ecacd94a0f70a3500843da588e2"},
-    {file = "cookiecutter-1.7.3.tar.gz", hash = "sha256:6b9a4d72882e243be077a7397d0f1f76fe66cf3df91f3115dbb5330e214fa457"},
+    {file = "cookiecutter-2.1.0-py2.py3-none-any.whl", hash = "sha256:5f3ee1fc5bae5a5f62a9a3bf5171258913e507d11c8d278208e3a7f61c1b95ac"},
+    {file = "cookiecutter-2.1.0.tar.gz", hash = "sha256:eca3133ebd0d138f226616c38dc456caafae7da45d6d33a3eeb83bf7f56f9c64"},
 ]
 darglint = [
     {file = "darglint-1.4.0-py3-none-any.whl", hash = "sha256:be8f4e722dd7c49d6b2abe1f23a2302e9b952fb88faab30fd030b7e79797901e"},
@@ -1347,10 +1352,6 @@ pep8-naming = [
 pluggy = [
     {file = "pluggy-0.13.1-py2.py3-none-any.whl", hash = "sha256:966c145cd83c96502c3c3868f50408687b38434af77734af1e9ca461a4081d2d"},
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
-]
-poyo = [
-    {file = "poyo-0.5.0-py2.py3-none-any.whl", hash = "sha256:3e2ca8e33fdc3c411cd101ca395668395dd5dc7ac775b8e809e3def9f9fe041a"},
-    {file = "poyo-0.5.0.tar.gz", hash = "sha256:e26956aa780c45f011ca9886f044590e2d8fd8b61db7b1c1cf4e0869f48ed4dd"},
 ]
 pre-commit = [
     {file = "pre_commit-2.15.0-py2.py3-none-any.whl", hash = "sha256:a4ed01000afcb484d9eb8d504272e642c4c4099bbad3a6b27e519bd6a3e928a6"},
